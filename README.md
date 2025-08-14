@@ -1,4 +1,4 @@
-# Base_opti
+# Cuboid_heatmap
 
 This project evaluates and visualizes the workspace of a **KUKA iiwa14 robotic arm**, computing inverse kinematics and scoring positions based on manipulability, joint limits, and singularity metrics.
 
