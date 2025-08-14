@@ -1,3 +1,6 @@
+# -------------------------------
+# FILE: draw.py
+# -------------------------------
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 
 def draw_cuboid(ax, center, size, alpha=0.1):
