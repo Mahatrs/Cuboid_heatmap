@@ -1,5 +1,3 @@
-### robot_base_optimization/  
-# Project structure for robot TCP heatmap evaluation and IK path planning
 # -------------------------------
 # FILE: robot_utils.py
 # -------------------------------
@@ -46,7 +44,7 @@ def get_jacobian(joint_values):
 
 # Compute manipulability index
 def compute_manipulability(joints):
-    J = get_jacobian(joints)  # J should be 6x7
+    J = get_jacobian(joints)
     JJ_T = np.dot(J, J.T) 
     try:
         manipulability = np.sqrt(np.linalg.det(JJ_T))
@@ -83,23 +81,19 @@ def compute_joint_limit(joint_values):
         if safe_min <= val <= safe_max:
             score = 1.0
         else:
-            # Use cosine dropoff near limits
             if val < safe_min:
                 x = (safe_min - val) / (safe_min - jmin)
             else:
                 x = (val - safe_max) / (jmax - safe_max)
             x = min(max(x, 0.0), 1.0)
-            score = 0.5 * (1 + math.cos(x * math.pi))  # Smooth drop from 1 to 0
-
+            score = 0.5 * (1 + math.cos(x * math.pi))
         scores.append(score)
-
     return sum(scores) / len(scores)
 
 
 # Compute singularity metric
 min_score=0.001 
 max_score=0.17
-
 
 def compute_singularity_metric(joint_values):
     J = get_jacobian(joint_values)
