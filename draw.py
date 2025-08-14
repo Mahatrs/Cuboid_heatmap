@@ -5,12 +5,10 @@ def draw_cuboid(ax, center, size, alpha=0.1):
     cx, cy, cz = center
     sx, sy, sz = size
 
-    # Compute corner coordinates
     x = [cx - sx/2, cx + sx/2]
     y = [cy - sy/2, cy + sy/2]
     z = [cz - sz/2, cz + sz/2]
 
-    # Vertices of the cuboid
     verts = [
         [ [x[0], y[0], z[0]], [x[1], y[0], z[0]], [x[1], y[1], z[0]], [x[0], y[1], z[0]] ],
         [ [x[0], y[0], z[1]], [x[1], y[0], z[1]], [x[1], y[1], z[1]], [x[0], y[1], z[1]] ],
